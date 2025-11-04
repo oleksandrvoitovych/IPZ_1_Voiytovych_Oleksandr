@@ -1,0 +1,26 @@
+﻿<Window x:Class="IPZ_Tickets_Client.Views.BookingWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Бронювання" Height="300" Width="400">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Margin="0,0,0,10">
+            <TextBlock Text="Деталі квитка" FontWeight="Bold" FontSize="14"/>
+            <TextBlock Text="{Binding Ticket.From}" />
+            <TextBlock Text="{Binding Ticket.To}" />
+            <TextBlock Text="{Binding Ticket.Date}" />
+            <TextBlock Text="{Binding Ticket.Time}" />
+            <TextBlock Text="{Binding Ticket.Seat, StringFormat=Місце: {0}}" />
+            <TextBlock Text="{Binding Ticket.Price, StringFormat=Ціна: {0:C}}" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Підтвердити" Style="{StaticResource PrimaryButton}" Command="{Binding ConfirmCommand}" Margin="4"/>
+            <Button Content="Скасувати" Margin="4" Command="{Binding CancelCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}"/>
+        </StackPanel>
+    </Grid>
+</Window>
